@@ -1,6 +1,7 @@
 class Solution {
 public:
     int findContentChildren(vector<int>& g, vector<int>& s) {
+      /*
        sort(s.begin(),s.end());
        sort(g.begin(),g.end());
        vector<int>mp(s.size(),0);
@@ -23,5 +24,23 @@ public:
            }
        }
        return ans;
+      */
+      //optimized method
+      sort(s.begin(),s.end());
+      sort(g.begin(),g.end());
+      int csz = s.size()-1;
+      int nch = g.size()-1;
+        int count = 0;
+      while(csz>=0 && nch>=0){
+          if(s[csz]>=g[nch]){
+              csz--;
+              nch--;
+              count++;
+          }
+          else{
+              nch--;
+          }
+      }
+      return count;
     }
 };
