@@ -4,11 +4,16 @@
  * @return {number[]}
  */
 var twoSum = function(nums, target) {
-    for(let i =0;i<nums.length;i++){
-        for(let j=i+1;j<nums.length;j++){
-            if (nums[i]+nums[j]==target){
-                return [i,j]
+    let map = {}
+    if(nums.length>=2){
+        for (let i = 0;i<nums.length;i++){
+            let y = target - nums[i];
+            if(map.hasOwnProperty(y)){
+                return [i,map[y]];
+            }else{
+                map[nums[i]]=i
             }
         }
     }
+    return [];
 };
