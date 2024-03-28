@@ -11,12 +11,19 @@ public:
             
             mp[nums[j]]++;
             // mxcnt = max(mxcnt, mp[nums[j]]);
-            while(i<j && mp[nums[j]] > k){
+            if(mp[nums[j]]==k+1){
+                cnt++;
+            }
+            if(cnt >0){
                 mp[nums[i]]--;
+                if(mp[nums[i]]==k){
+                    cnt--;
+                }
                 i++;
             }
-            
-            len = max(len, (j-i+1));
+            if(cnt == 0){
+                len = max(len, j-i+1);
+            }
             j++;
         }
         return len;
